@@ -50,6 +50,8 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
             val bundle = Bundle()
             bundle.putDouble("TOTAL_LIABILITIES", totalAssets)
             bundle.putDouble("TOTAL_ASSETS", receivedAssetsTotal)
+            totalAssets = 0.0
+            dataset.clear()
             Navigation.findNavController(view)
                 .navigate(R.id.action_userLiabilitiesFragment_to_networthResultFragment, bundle)
         }

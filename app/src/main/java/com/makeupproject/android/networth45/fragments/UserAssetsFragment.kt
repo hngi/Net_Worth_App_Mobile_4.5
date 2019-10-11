@@ -47,6 +47,8 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
         calcliab.setOnClickListener {
             val bundle = Bundle()
             bundle.putDouble("TOTAL_ASSETS", totalAssets)
+            totalAssets = 0.0
+            dataset.clear()
             Navigation.findNavController(view)
                 .navigate(R.id.action_userAssetsFragment_to_userLiabilitiesFragment, bundle)
         }
