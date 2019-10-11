@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.makeupproject.android.networth45.R
 import com.makeupproject.android.networth45.models.AssetModel
+import java.text.DecimalFormat
 
 class AssetsAdapter(val context: Context?, val frag: ItemDeletable, var dataset: List<AssetModel>) :
     RecyclerView.Adapter<AssetsAdapter.ViewHolder>() {
@@ -30,7 +31,9 @@ class AssetsAdapter(val context: Context?, val frag: ItemDeletable, var dataset:
         val asset = dataset[position]
 
         holder.assetName.text = asset.name
-        holder.assetValue.text = asset.value.toString()
+        val formatter = DecimalFormat("#,###")
+        val formattedNumber = formatter.format(asset.value)
+        holder.assetValue.text = "₦$formattedNumber"
         holder.deleteIcon.setOnClickListener {
             frag.deleteItem(position)
         }

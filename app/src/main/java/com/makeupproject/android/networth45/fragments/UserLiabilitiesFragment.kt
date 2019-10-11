@@ -12,6 +12,7 @@ import com.makeupproject.android.networth45.models.AssetModel
 import com.makeupproject.android.networth45.ui.AssetsAdapter
 import kotlinx.android.synthetic.main.fragment_user_assets.txtTotal
 import kotlinx.android.synthetic.main.fragment_user_liabilities.*
+import java.text.DecimalFormat
 
 class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), AssetsAdapter.ItemDeletable {
 
@@ -62,6 +63,8 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
     }
 
     fun updateTotal() {
-        txtTotal.text = "LIABILITIES TOTAL: ₦$totalAssets"
+        val formatter = DecimalFormat("#,###")
+        val formattedNumber = formatter.format(totalAssets)
+        txtTotal.text = "LIABILITIES TOTAL: ₦$formattedNumber"
     }
 }
