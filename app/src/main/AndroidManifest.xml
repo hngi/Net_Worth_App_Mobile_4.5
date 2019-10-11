@@ -9,17 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FinallyActivity"></activity>
-        <activity android:name=".LiabilityDefinitionActivity" />
-        <activity android:name=".AssetDefinitonActivity" />
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".FinallyActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LiabilityDefinitionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AssetDefinitonActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CalculatorActivity" />
     </application>
 
 </manifest>

@@ -1,9 +1,9 @@
 package com.makeupproject.android.networth45
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -11,7 +11,8 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
     }
-    fun Change(view: View){
+
+    fun Change(view: View) {
         //Change the activity
         val intent = Intent(this@WelcomeActivity, AssetDefinitonActivity::class.java)
         startActivity(intent)

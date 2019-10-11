@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val countDownTimer = object:CountDownTimer(10000, 1000) {
+        val countDownTimer = object : CountDownTimer(2000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
                 //Change the activity when the timer is done
                 val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
         countDownTimer.start()

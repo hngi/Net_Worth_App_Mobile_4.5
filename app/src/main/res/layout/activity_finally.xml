@@ -15,6 +15,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="60dp"
         android:text="@string/calculate"
+        android:onClick="goToCalculator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -59,17 +60,19 @@
 
     <TextView
         android:id="@+id/descriptionTextview"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/page4_text"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         android:textColor="#FFFFFFFF"
-        android:textSize="36sp"
         app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
