@@ -9,4 +9,8 @@ class CalculatorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
     }
+
+    fun changeActionBarText(title: String) {
+        supportActionBar?.title = title
+    }
 }
