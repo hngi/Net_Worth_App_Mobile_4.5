@@ -43,6 +43,8 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
             dataset.add(assetModel)
             adapter.notifyItemInserted(dataset.size - 1)
             totalAssets += editliabilityValue.text.toString().toDouble()
+            editliabilityName.setText("")
+            editliabilityValue.setText("")
             updateTotal()
         }
 

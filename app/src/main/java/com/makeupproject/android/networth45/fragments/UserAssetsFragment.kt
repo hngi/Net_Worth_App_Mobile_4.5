@@ -41,6 +41,8 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
             dataset.add(assetModel)
             adapter.notifyItemInserted(dataset.size - 1)
             totalAssets += editAssetValue.text.toString().toDouble()
+            editAssetName.setText("")
+            editAssetValue.setText("")
             updateTotal()
         }
 
