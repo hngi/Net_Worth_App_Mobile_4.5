@@ -19,6 +19,7 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
     lateinit var dataset: MutableList<AssetModel>
     lateinit var adapter: AssetsAdapter
 
+    var receivedAssetsTotal = 0.0
     var totalAssets = 0.0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,6 +29,7 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
             this.changeActionBarText("Assets")
         }
 
+        receivedAssetsTotal = arguments?.getDouble("TOTAL_ASSETS", 0.0) ?: 0.0
         // Set up the list
         dataset = mutableListOf()
         adapter = AssetsAdapter(context, this, dataset)
@@ -46,6 +48,7 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
         showworth.setOnClickListener {
             val bundle = Bundle()
             bundle.putDouble("TOTAL_LIABILITIES", totalAssets)
+            bundle.putDouble("TOTAL_ASSETS", receivedAssetsTotal)
             Navigation.findNavController(view)
                 .navigate(R.id.action_userLiabilitiesFragment_to_networthResultFragment, bundle)
         }
@@ -59,6 +62,6 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
     }
 
     fun updateTotal() {
-        txtTotal.text = "ASSETS TOTAL: #$totalAssets"
+        txtTotal.text = "LIABILITIES TOTAL: #$totalAssets"
     }
 }
