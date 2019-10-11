@@ -3,6 +3,7 @@ package com.makeupproject.android.networth45.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.makeupproject.android.networth45.CalculatorActivity
@@ -38,6 +39,13 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
             adapter.notifyItemInserted(dataset.size - 1)
             totalAssets += editAssetValue.text.toString().toDouble()
             updateTotal()
+        }
+
+        calcliab.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putDouble("TOTAL_ASSETS", totalAssets)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_userAssetsFragment_to_userLiabilitiesFragment, bundle)
         }
     }
 
