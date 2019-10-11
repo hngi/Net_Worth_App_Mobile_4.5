@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/calc_nav">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calc_nav"
+    app:startDestination="@id/userAssetsFragment">
 
+    <fragment
+        android:id="@+id/userAssetsFragment"
+        android:name="com.makeupproject.android.networth45.fragments.UserAssetsFragment"
+        android:label="UserAssetsFragment"
+        tools:layout="@layout/fragment_user_assets">
+        <action
+            android:id="@+id/action_userAssetsFragment_to_userLiabilitiesFragment"
+            app:destination="@id/userLiabilitiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userLiabilitiesFragment"
+        android:name="com.makeupproject.android.networth45.fragments.UserLiabilitiesFragment"
+        android:label="UserLiabilitiesFragment"
+        tools:layout="@layout/fragment_user_liabilities">
+        <action
+            android:id="@+id/action_userLiabilitiesFragment_to_networthResultFragment"
+            app:destination="@id/networthResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networthResultFragment"
+        android:name="com.makeupproject.android.networth45.fragments.NetworthResultFragment"
+        android:label="NetworthResultFragment"
+        tools:layout="@layout/fragment_result_networth" />
 </navigation>
