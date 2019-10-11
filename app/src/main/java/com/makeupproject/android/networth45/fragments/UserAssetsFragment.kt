@@ -28,7 +28,7 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
 
         // Set up the list
         dataset = mutableListOf()
-        adapter = AssetsAdapter(this, dataset)
+        adapter = AssetsAdapter(context, this, dataset)
 
         recyclerview_assets.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerview_assets.adapter = adapter

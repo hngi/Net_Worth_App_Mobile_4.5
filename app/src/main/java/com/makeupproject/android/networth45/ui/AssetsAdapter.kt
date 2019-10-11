@@ -1,6 +1,6 @@
 package com.makeupproject.android.networth45.ui
 
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,27 +8,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.makeupproject.android.networth45.R
-import com.makeupproject.android.networth45.fragments.UserAssetsFragment
 import com.makeupproject.android.networth45.models.AssetModel
 
-class AssetsAdapter(val frag: UserAssetsFragment, var dataset: List<AssetModel>) :
+class AssetsAdapter(val context: Context?, val frag: ItemDeletable, var dataset: List<AssetModel>) :
     RecyclerView.Adapter<AssetsAdapter.ViewHolder>() {
-
-    init {
-        try {
-            frag
-        } catch (e: ClassCastException) {
-            Log.e(TAG, "Context must implement ItemDeletable")
-            throw ClassCastException(e.message)
-        }
-    }
 
     interface ItemDeletable {
         fun deleteItem(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(frag.context).inflate(R.layout.layout_asset_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.layout_asset_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -42,10 +32,7 @@ class AssetsAdapter(val frag: UserAssetsFragment, var dataset: List<AssetModel>)
         holder.assetName.text = asset.name
         holder.assetValue.text = asset.value.toString()
         holder.deleteIcon.setOnClickListener {
-            with(frag as ItemDeletable) {
-                this.deleteItem(position)
-            }
-
+            frag.deleteItem(position)
         }
     }
 
