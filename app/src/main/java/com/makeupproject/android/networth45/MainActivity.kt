@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
                 //Change the activity when the timer is done
                 val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
         countDownTimer.start()

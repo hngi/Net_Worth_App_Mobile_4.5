@@ -21,7 +21,8 @@
         tools:layout="@layout/fragment_user_liabilities">
         <action
             android:id="@+id/action_userLiabilitiesFragment_to_networthResultFragment"
-            app:destination="@id/networthResultFragment" />
+            app:destination="@id/networthResultFragment"
+            app:popUpTo="@+id/userAssetsFragment" />
     </fragment>
     <fragment
         android:id="@+id/networthResultFragment"
