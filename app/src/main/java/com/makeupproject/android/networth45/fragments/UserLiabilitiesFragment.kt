@@ -25,7 +25,7 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
         super.onViewCreated(view, savedInstanceState)
 
         with(activity as CalculatorActivity) {
-            this.changeActionBarText("Assets")
+            this.changeActionBarText("Liabilities")
         }
 
         receivedAssetsTotal = arguments?.getDouble("TOTAL_ASSETS", 0.0) ?: 0.0
@@ -62,6 +62,6 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
     }
 
     fun updateTotal() {
-        txtTotal.text = "LIABILITIES TOTAL: #$totalAssets"
+        txtTotal.text = "LIABILITIES TOTAL: ₦$totalAssets"
     }
 }

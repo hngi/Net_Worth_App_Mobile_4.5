@@ -57,6 +57,6 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
     }
 
     fun updateTotal() {
-        txtTotal.text = "ASSETS TOTAL: #$totalAssets"
+        txtTotal.text = "ASSETS TOTAL: ₦$totalAssets"
     }
 }
