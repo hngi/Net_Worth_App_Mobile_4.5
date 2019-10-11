@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NetWorth45</string>
-    <string name="sign">$</string>
-    <string name="page1_text">Welcome to AmeriNet. \nCalculate your net worth in simple steps</string>
+    <string name="sign">₦</string>
+    <string name="page1_text">Welcome to NetWorth45. \nCalculate your net worth in 3 simple steps.</string>
     <string name="nextButton">Next</string>
     <string name="page2_text">First, add your assets. \n\nYour assets comprise of your large assets
         (value of your home, car e.t.c), liquid asset (your savings account, investment e.t.c) and personal items of
