@@ -10,7 +10,6 @@ import com.makeupproject.android.networth45.CalculatorActivity
 import com.makeupproject.android.networth45.R
 import com.makeupproject.android.networth45.models.AssetModel
 import com.makeupproject.android.networth45.ui.AssetsAdapter
-import kotlinx.android.synthetic.main.fragment_user_assets.*
 import kotlinx.android.synthetic.main.fragment_user_assets.txtTotal
 import kotlinx.android.synthetic.main.fragment_user_liabilities.*
 
@@ -19,6 +18,7 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
     lateinit var dataset: MutableList<AssetModel>
     lateinit var adapter: AssetsAdapter
 
+    var receivedAssetsTotal = 0.0
     var totalAssets = 0.0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,24 +28,27 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
             this.changeActionBarText("Assets")
         }
 
+        receivedAssetsTotal = arguments?.getDouble("TOTAL_ASSETS", 0.0) ?: 0.0
         // Set up the list
         dataset = mutableListOf()
         adapter = AssetsAdapter(context, this, dataset)
 
-        recyclerview_assets.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        recyclerview_assets.adapter = adapter
+        recyclerview_liabilities.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerview_liabilities.adapter = adapter
 
-        userAssetsFab.setOnClickListener {
-            val assetModel = AssetModel(editAssetName.text.toString(), editAssetValue.text.toString().toDouble())
+        userliabilitiesFab.setOnClickListener {
+            val assetModel =
+                AssetModel(editliabilityName.text.toString(), editliabilityValue.text.toString().toDouble())
             dataset.add(assetModel)
             adapter.notifyItemInserted(dataset.size - 1)
-            totalAssets += editAssetValue.text.toString().toDouble()
+            totalAssets += editliabilityValue.text.toString().toDouble()
             updateTotal()
         }
 
         showworth.setOnClickListener {
             val bundle = Bundle()
             bundle.putDouble("TOTAL_LIABILITIES", totalAssets)
+            bundle.putDouble("TOTAL_ASSETS", receivedAssetsTotal)
             Navigation.findNavController(view)
                 .navigate(R.id.action_userLiabilitiesFragment_to_networthResultFragment, bundle)
         }
@@ -59,6 +62,6 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
     }
 
     fun updateTotal() {
-        txtTotal.text = "ASSETS TOTAL: #$totalAssets"
+        txtTotal.text = "LIABILITIES TOTAL: #$totalAssets"
     }
 }
