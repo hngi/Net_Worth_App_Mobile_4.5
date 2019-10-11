@@ -101,7 +101,7 @@
                 tools:layout_conversion_absoluteWidth="411dp" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txtTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

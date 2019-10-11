@@ -16,6 +16,8 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
     lateinit var dataset: MutableList<AssetModel>
     lateinit var adapter: AssetsAdapter
 
+    var totalAssets = 0.0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -34,11 +36,19 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
             val assetModel = AssetModel(editAssetName.text.toString(), editAssetValue.text.toString().toDouble())
             dataset.add(assetModel)
             adapter.notifyItemInserted(dataset.size - 1)
+            totalAssets += editAssetValue.text.toString().toDouble()
+            updateTotal()
         }
     }
 
     override fun deleteItem(position: Int) {
+        totalAssets -= dataset[position].value
         dataset.removeAt(position)
         adapter.notifyItemRemoved(position)
+        updateTotal()
+    }
+
+    fun updateTotal() {
+        txtTotal.text = "ASSETS TOTAL: #$totalAssets"
     }
 }
