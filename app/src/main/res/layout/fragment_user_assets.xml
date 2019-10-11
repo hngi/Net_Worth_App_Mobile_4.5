@@ -25,7 +25,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
+                android:id="@+id/userAssetsFab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -36,11 +36,11 @@
                 android:clickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText2"
+                app:layout_constraintTop_toBottomOf="@+id/editAssetValue"
                 app:srcCompat="@drawable/ic_add_black_24dp" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/editAssetValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -60,10 +60,10 @@
                 android:layout_marginTop="16dp"
                 android:text="Monetary Value"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintTop_toBottomOf="@+id/editAssetName" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editAssetName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:text="Asset Name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerview_assets" />
@@ -111,7 +111,7 @@
                 android:text="ASSETS TOTAL: #0.00"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
+                app:layout_constraintTop_toBottomOf="@+id/userAssetsFab" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
