@@ -52,8 +52,7 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
             var assetVal = 0.0
             if (assetString.isEmpty()) {
                 assetModel = AssetModel(assetName, assetVal)
-            }
-            else {
+            } else {
                 assetVal = assetString.toDouble()
                 assetModel = AssetModel(assetName, assetVal)
             }

@@ -53,8 +53,7 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
             var liabilityVal = 0.0
             if (liabilityString.isEmpty()) {
                 assetModel = AssetModel(liabilityName, liabilityVal)
-            }
-            else {
+            } else {
                 liabilityVal = liabilityString.toDouble()
                 assetModel =
                     AssetModel(liabilityName, liabilityVal)
