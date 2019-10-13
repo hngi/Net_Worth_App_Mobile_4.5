@@ -38,11 +38,25 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
         recyclerview_liabilities.adapter = adapter
 
         userliabilitiesFab.setOnClickListener {
-            val assetModel =
-                AssetModel(editliabilityName.text.toString(), editliabilityValue.text.toString().toDouble())
+            //validation of input value
+            var assetModel:AssetModel
+            var liabilityString = editliabilityValue.text.toString()
+            var liabilityVal = 0.0
+            if (liabilityString.equals("")) {
+                assetModel = AssetModel(editliabilityName.text.toString(), liabilityVal)
+            }
+            else {
+                liabilityVal = liabilityString.toDouble()
+                assetModel =
+                    AssetModel(editliabilityName.text.toString(), liabilityVal)
+            }
+            //add asset model to data set
             dataset.add(assetModel)
+            //notify adapter of change
             adapter.notifyItemInserted(dataset.size - 1)
-            totalAssets += editliabilityValue.text.toString().toDouble()
+            //calculate total liabilities
+            totalAssets += liabilityVal
+            //clear text views
             editliabilityName.setText("")
             editliabilityValue.setText("")
             updateTotal()
