@@ -2,6 +2,7 @@ package com.makeupproject.android.networth45.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,16 +39,22 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
 
         userAssetsFab.setOnClickListener {
             //validation of input value
-            var assetModel:AssetModel
-            val assetString = editAssetValue.text.toString()
-            var assetVal = 0.0
-            if (assetString.equals("")){
-                assetModel = AssetModel(editAssetName.text.toString(), assetVal)
+            val assetString = editAssetValue.text.toString().trim()
+            val assetName = editAssetName.text.toString().trim()
+
+            if (assetName.isEmpty()) {
+                // Every Asset needs a name
+                showError("Every Asset needs a name")
+                return@setOnClickListener
             }
-            else {
+
+            val assetModel: AssetModel
+            var assetVal = 0.0
+            if (assetString.isEmpty()) {
+                assetModel = AssetModel(assetName, assetVal)
+            } else {
                 assetVal = assetString.toDouble()
-                assetModel =
-                    AssetModel(editAssetName.text.toString(), assetVal)
+                assetModel = AssetModel(assetName, assetVal)
             }
             //add asset model to data set
             dataset.add(assetModel)
@@ -71,6 +78,10 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
         }
     }
 
+    private fun showError(s: String) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
+    }
+
     override fun deleteItem(position: Int) {
         totalAssets -= dataset[position].value
         dataset.removeAt(position)
@@ -78,7 +89,7 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
         updateTotal()
     }
 
-    fun updateTotal() {
+    private fun updateTotal() {
         val formatter = DecimalFormat("#,###")
         val formattedNumber = formatter.format(totalAssets)
         txtTotal.text = "ASSETS TOTAL: ₦$formattedNumber"

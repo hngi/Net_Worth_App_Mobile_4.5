@@ -2,6 +2,7 @@ package com.makeupproject.android.networth45.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,16 +40,23 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
 
         userliabilitiesFab.setOnClickListener {
             //validation of input value
-            var assetModel:AssetModel
-            var liabilityString = editliabilityValue.text.toString()
-            var liabilityVal = 0.0
-            if (liabilityString.equals("")) {
-                assetModel = AssetModel(editliabilityName.text.toString(), liabilityVal)
+            val liabilityString = editliabilityValue.text.toString().trim()
+            val liabilityName = editliabilityName.text.toString().trim()
+
+            if (liabilityName.isEmpty()) {
+                // Every Asset needs a name
+                showError("Every Liability needs a name")
+                return@setOnClickListener
             }
-            else {
+
+            val assetModel: AssetModel
+            var liabilityVal = 0.0
+            if (liabilityString.isEmpty()) {
+                assetModel = AssetModel(liabilityName, liabilityVal)
+            } else {
                 liabilityVal = liabilityString.toDouble()
                 assetModel =
-                    AssetModel(editliabilityName.text.toString(), liabilityVal)
+                    AssetModel(liabilityName, liabilityVal)
             }
             //add asset model to data set
             dataset.add(assetModel)
@@ -71,6 +79,10 @@ class UserLiabilitiesFragment : Fragment(R.layout.fragment_user_liabilities), As
             Navigation.findNavController(view)
                 .navigate(R.id.action_userLiabilitiesFragment_to_networthResultFragment, bundle)
         }
+    }
+
+    private fun showError(s: String) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
     }
 
     override fun deleteItem(position: Int) {
