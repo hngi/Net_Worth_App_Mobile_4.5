@@ -37,10 +37,25 @@ class UserAssetsFragment : Fragment(R.layout.fragment_user_assets), AssetsAdapte
         recyclerview_assets.adapter = adapter
 
         userAssetsFab.setOnClickListener {
-            val assetModel = AssetModel(editAssetName.text.toString(), editAssetValue.text.toString().toDouble())
+            //validation of input value
+            var assetModel:AssetModel
+            val assetString = editAssetValue.text.toString()
+            var assetVal = 0.0
+            if (assetString.equals("")){
+                assetModel = AssetModel(editAssetName.text.toString(), assetVal)
+            }
+            else {
+                assetVal = assetString.toDouble()
+                assetModel =
+                    AssetModel(editAssetName.text.toString(), assetVal)
+            }
+            //add asset model to data set
             dataset.add(assetModel)
+            //notify adapter of change
             adapter.notifyItemInserted(dataset.size - 1)
-            totalAssets += editAssetValue.text.toString().toDouble()
+            //calculate total assets
+            totalAssets += assetVal
+            //clear text views
             editAssetName.setText("")
             editAssetValue.setText("")
             updateTotal()
