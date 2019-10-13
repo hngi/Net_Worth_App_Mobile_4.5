@@ -35,7 +35,7 @@ class AssetsAdapter(val context: Context?, val frag: ItemDeletable, var dataset:
         val formattedNumber = formatter.format(asset.value)
         holder.assetValue.text = "₦$formattedNumber"
         holder.deleteIcon.setOnClickListener {
-            frag.deleteItem(position)
+            frag.deleteItem(holder.adapterPosition)
         }
     }
 
